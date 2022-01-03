@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.app.Kitalulus.model.User;
-import com.app.Kitalulus.repository.RepositoryUser;
 import com.app.kitalulus.dto.AppUserDetails;
+import com.app.kitalulus.model.User;
+import com.app.kitalulus.repository.RepositoryUser;
 
 import lombok.extern.slf4j.Slf4j;
 

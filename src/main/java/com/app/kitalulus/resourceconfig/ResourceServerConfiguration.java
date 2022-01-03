@@ -10,7 +10,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import com.app.Kitalulus.constants.SecurityProperties;
+
+import com.app.kitalulus.constants.SecurityProperties;
 
 import lombok.extern.slf4j.Slf4j;
 
