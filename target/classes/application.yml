@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: kitalulus
+  datasource:
+    url: jdbc:h2:~/kitalulus;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    initialization-mode: never
+
+  h2:
+    console.enabled: true
+    console.path: /h2-console
+    
+  jpa:
+    hibernate:
+      use-new-id-generator-mappings: false
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        enable_lazy_load_no_trans: true
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+    enabled: true
+
+  security:
+    jwt:
+      key-store: classpath:keystore.jks
+      public-key: classpath:public.key
+      key-store-password: letmein
+      key-pair-alias: mytestkey
+      key-pair-password: changeme
+    
+config:
+  oauth2:
+    accessTokenUri: http://localhost:8080/security/oauth/token
+    portalclientid: clientId
+    portalsecret: secret
+
+api:
+  fixer-io:
+    api-key: 50e0b9f873a594ecd0ee6b739cb4f8de
+  rate:
+    limiter:
+      rpm: 30   
+        
+logging:
+  level:
+    com:
+      app:
+        Kitalulus:
+          feignclient:
+            CountryInformationServiceClient: DEBUG
+            CurrencyInformationServiceClient: DEBUG
+#    org:
+#      springframework: DEBUG
+
+
+
+
+
+

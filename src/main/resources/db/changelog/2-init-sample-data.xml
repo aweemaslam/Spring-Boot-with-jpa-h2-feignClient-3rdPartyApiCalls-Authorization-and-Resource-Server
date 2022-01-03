@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="002" author="Aweem">
+		<sql>
+			INSERT INTO `role` (`code`, `role_name`) VALUES ('ROLE_ADMIN', 'ROLE_ADMIN');
+			INSERT INTO `role` (`code`, `role_name`) VALUES ('ROLE_USER', 'ROLE_USER');
+			INSERT INTO `user` (`account_type`, `email`, `full_name`, `mobile_number`, `password`, `principal_name`, `social_platform`) VALUES ('EMAIL', 'admin@admin.com', 'admin', '00923027766573', '{bcrypt}$2a$12$Pb1qZrgDS/ncR.U2gUS7h.ss1vnIElaV5Ba4.OLXiqAtv8ShTIQ5S', 'admin@admin.com', 'NONE');
+			INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('1', '1');
+		</sql>
+		<sql>
+			 -- The encrypted client_secret it `secret`
+			INSERT INTO oauth_client_details (client_id, client_secret, scope, authorized_grant_types, authorities, access_token_validity)
+  			VALUES ('clientId', '{bcrypt}$2a$12$Pb1qZrgDS/ncR.U2gUS7h.ss1vnIElaV5Ba4.OLXiqAtv8ShTIQ5S', 'read,write,all', 'password,refresh_token,client_credentials', 'ROLE_CLIENT', 36000);
+			
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>

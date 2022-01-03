@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="001" author="Aweem">
+        <sql>
+           CREATE TABLE `role` (
+			  `id` int NOT NULL AUTO_INCREMENT,
+			  `code` varchar(100) NOT NULL,
+			  `role_name` varchar(100) NOT NULL,
+			  PRIMARY KEY (`id`)
+			) ;
+			
+			CREATE TABLE `user` (
+			  `id` int NOT NULL AUTO_INCREMENT,
+			  `account_type` varchar(255) DEFAULT NULL,
+			  `email` varchar(100) NOT NULL,
+			  `full_name` varchar(255) NOT NULL,
+			  `mobile_number` varchar(45) DEFAULT NULL,
+			  `password` varchar(70) DEFAULT NULL,
+			  `principal_name` varchar(45) DEFAULT NULL,
+			  `social_platform` varchar(255) DEFAULT NULL,
+			  PRIMARY KEY (`id`)
+			) ;
+			
+			CREATE TABLE `user_role` (
+			  `user_id` int NOT NULL,
+			  `role_id` int NOT NULL,
+			  UNIQUE KEY `UK_it77eq964jhfqtu54081ebtio` (`role_id`)
+			) ;
+
+        </sql>
+        <sql>
+        	  CREATE TABLE IF NOT EXISTS oauth_client_details (
+			  client_id VARCHAR(256) PRIMARY KEY,
+			  resource_ids VARCHAR(256),
+			  client_secret VARCHAR(256) NOT NULL,
+			  scope VARCHAR(256),
+			  authorized_grant_types VARCHAR(256),
+			  web_server_redirect_uri VARCHAR(256),
+			  authorities VARCHAR(256),
+			  access_token_validity INTEGER,
+			  refresh_token_validity INTEGER,
+			  additional_information VARCHAR(4000),
+			  autoapprove VARCHAR(256)
+			);
+			
+			CREATE TABLE IF NOT EXISTS oauth_client_token (
+			  token_id VARCHAR(256),
+			  token BLOB,
+			  authentication_id VARCHAR(256) PRIMARY KEY,
+			  user_name VARCHAR(256),
+			  client_id VARCHAR(256)
+			);
+			
+			CREATE TABLE IF NOT EXISTS oauth_access_token (
+			  token_id VARCHAR(256),
+			  token BLOB,
+			  authentication_id VARCHAR(256),
+			  user_name VARCHAR(256),
+			  client_id VARCHAR(256),
+			  authentication BLOB,
+			  refresh_token VARCHAR(256)
+			);
+			
+			CREATE TABLE IF NOT EXISTS oauth_refresh_token (
+			  token_id VARCHAR(256),
+			  token BLOB,
+			  authentication BLOB
+			);
+			
+			CREATE TABLE IF NOT EXISTS oauth_code (
+			  code VARCHAR(256), authentication BLOB
+			);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
