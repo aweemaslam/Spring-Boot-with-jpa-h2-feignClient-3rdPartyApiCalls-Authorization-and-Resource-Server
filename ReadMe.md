@@ -11,3 +11,5 @@
 * integrated `https://restcountries.com/` and `https://fixer.io` using feign client.
 * OAuth2 flow is implemented
 * swagger documentation `http://localhost:8080/swagger-ui.html#/`
+* h2 database used.
+* just import and run, default credentails : admin@admin.com/secret
